@@ -1,0 +1,35 @@
+﻿<Window x:Class="BudgetManager.WindowAddCredit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BudgetManager"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="LightGray" FontFamily="/BudgetManager;component/Fonts/#EngraversGothic BT" Loaded="Window_Loaded" Height="240" Width="350" >
+    <StackPanel Width="350">
+        <Grid Margin="1" Background="White" VerticalAlignment="Top">
+            <TextBlock Text="Ajouter un crédit" Foreground="#FF073E6A" FontSize="22" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button x:Name="ButtonClose" Click="ButtonClose_Click" HorizontalAlignment="Left" Margin="10">
+                <materialDesign:PackIcon Kind="ArrowLeft"/>
+            </Button>
+            <Button x:Name="ButtonAdd" HorizontalAlignment="Right" Margin="10" Click="ButtonAdd_Click">
+                <materialDesign:PackIcon Kind="Check"/>
+            </Button>
+        </Grid>
+        <StackPanel>
+            <TextBlock x:Name="TextBlockGoal" Text="{Binding Path=Name}" Margin="15" HorizontalAlignment="Left" FontSize="20"/>
+            <ComboBox x:Name="ComboBoxGoals" Margin="15" materialDesign:HintAssist.Hint="Catégorie (facultatif)" VerticalAlignment="Center" ItemsSource="{Binding Goal}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="400"
+                                    Text="{Binding Path=Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox x:Name="TextBoxValue" Margin="15" materialDesign:HintAssist.Hint="Valeur" LostFocus="TextBoxValue_LostFocus" GotFocus="TextBoxValue_GotFocus" HorizontalAlignment="Stretch"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
